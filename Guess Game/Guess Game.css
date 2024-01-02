@@ -1,0 +1,123 @@
+@keyframes backgroundColor {
+    0%{background-position: left;}
+    10%{background-position: right;}
+    20%{background-position: left;}
+    30%{background-position: right;}
+    40%{background-position: left;}
+    50%{background-position: right;}
+    60%{background-position: left;}
+    70%{background-position: right;}
+    80%{background-position: left;}
+    90%{background-position: right;}
+    100%{background-position: left;}
+}
+
+body{
+    background: linear-gradient(
+        135deg,
+        rgb(208, 135, 184),
+        rgb(168, 26, 68),
+        rgb(4, 97, 123),
+        rgb(138, 183, 217)
+        );
+    background-size: 300%;
+    background-position: left;
+    transition: 8s; 
+}
+
+body:hover{
+    animation: backgroundColor 80s infinite
+}
+
+.container-1{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    color: white;
+    font-family: Montserrat,Verdana, Geneva, Tahoma, sans-serif;
+    
+    font-size: larger;  
+}
+
+.container-1 img{
+    height: 200px;
+    border-radius: 20px;
+}
+
+.container-1 input{
+    background: transparent;
+    border-radius: 5px;
+    border: white 1px ;
+    width: 250px;
+    padding: 10px;
+    color: white;
+    border-inline-color: white;
+}
+
+.container-1 button{
+    color: white;
+    background: transparent;
+    padding: 10px;
+    margin-left: 5px;
+    border: white 1px solid;
+    border-radius: 10px;
+}
+
+.container-1 button:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.container-1 button:active{
+    color: black;
+    background-color: rgb(206, 206, 206);
+    border-color:rgb(206, 206, 206);
+}
+
+
+.play-again{
+    margin-top: 75px;
+}
+
+
+@keyframes intro {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.intro{
+    animation: intro 1s
+}
+
+
+@keyframes fadeInOut {
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+.fadeInOut{
+    animation: fadeInOut 0.5s;
+}
+
+
+
+
+/* Same results as previous css code
+    .container-1{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top:0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;          
+    }
+*/

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Guess-Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+<style>
+        @keyframes backgroundColor {
+    0%{background-position: left;}
+    10%{background-position: right;}
+    20%{background-position: left;}
+    30%{background-position: right;}
+    40%{background-position: left;}
+    50%{background-position: right;}
+    60%{background-position: left;}
+    70%{background-position: right;}
+    80%{background-position: left;}
+    90%{background-position: right;}
+    100%{background-position: left;}
+}
+
+body{
+    background: linear-gradient(
+        135deg,
+        rgb(208, 135, 184),
+        rgb(168, 26, 68),
+        rgb(4, 97, 123),
+        rgb(138, 183, 217)
+        );
+    background-size: 300%;
+    background-position: left;
+    transition: 8s;
+    color: white; 
+}
+
+body:hover{
+    animation: backgroundColor 80s infinite
+}
+
+.container-1{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    color: white;
+    font-family: Montserrat,Verdana, Geneva, Tahoma, sans-serif;
+    
+    font-size: larger;  
+}
+
+.container-1 img{
+    height: 200px;
+    border-radius: 20px;
+}
+
+.container-1 input{
+    background: transparent;
+    border-radius: 5px;
+    border: white 1px ;
+    width: 250px;
+    padding: 10px;
+    color: white;
+    border-inline-color: white;
+}
+
+.container-1 button{
+    color: white;
+    background: transparent;
+    padding: 10px;
+    margin-left: 5px;
+    border: white 1px solid;
+    border-radius: 10px;
+}
+
+.container-1 button:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.container-1 button:active{
+    color: black;
+    background-color: rgb(206, 206, 206);
+    border-color:rgb(206, 206, 206);
+}
+
+
+.play-again{
+    margin-top: 75px;
+}
+
+
+@keyframes intro {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.intro{
+    animation: intro 1s
+}
+
+
+@keyframes fadeInOut {
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+.fadeInOut{
+    animation: fadeInOut 0.5s;
+}
+
+
+    </style>
+
+
+</head>
+<body>
+    
+        <div class="container-1 intro">
+            <div>
+                <H2>Welcome to the Guessing Game:</H2>
+            </div>
+            <div class="d-intro">
+                <input class="user-name-input" type="text" placeholder="What's your name?">
+                <button class="name-input-button">ENTER</button>
+                
+            </div>
+            
+        </div>
+        
+
+       
+<script>
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+   let randomNumber = (Math.random()*10).toFixed(0)
+   console.log(randomNumber)
+   
+   
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////
+   
+   function askName(){
+       document.querySelector(".name-input-button").addEventListener('click', ()=>{
+           let userName = document.querySelector(".user-name-input").value
+           document.querySelector(".container-1").innerHTML=
+           `
+               <div class="intro">
+                   <H2>Welcome : ${userName}</H2>
+                   <p>Guess a number between 1-10:</p>
+               </div>
+               <div class="d-intro">
+                   <input id="user-name"class="user-number-input" type="number" placeholder="Type your guess" min="1" max="100">
+                   <button class="number-input-button">ENTER</button>
+               </div>
+               <div class="guess-result intro">
+   
+               </div>
+           `
+           ShowrGuessResult(userName)
+       })
+   }
+   askName()
+   
+   
+   
+   
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////
+   function ShowrGuessResult(userName){
+       
+       document.querySelector(".number-input-button").addEventListener('click',()=>{
+   
+           let userInputNumber = document.querySelector(".user-number-input").value 
+   
+           let diff = Math.abs(randomNumber-userInputNumber)
+           
+   
+           ///////////////////////////////////////////////////////////////////////////////////
+           if (userInputNumber==="") {
+               document.querySelector(".guess-result").innerHTML=
+               `
+                   <p class="intro">OMG ${userName}, please enter numbers only !!</p>
+                   <img class="intro" src="/Meet-up Sessions/Guess Game/facepalm.gif" alt="facepalm">
+               `
+           } 
+           ///////////////////////////////////////////////////////////////////////////////////
+           else if (userInputNumber>10 || userInputNumber<=0) {
+               document.querySelector(".guess-result").innerHTML=
+               `
+                   <p class="intro"> Your guess is out of scope, you idiot !</p>
+                   <img class="intro" src="/Meet-up Sessions/Guess Game/idiot.gif" alt="idiot">
+               `
+           } 
+           //////////////////////////////////////////////////////////////////////////////////
+           else if (randomNumber>parseFloat(userInputNumber) && diff>3){
+               document.querySelector(".guess-result").innerHTML=
+           `
+               <p class="intro">${userName}.  Your guess is lower. Try a higher number !</p>
+               <img class=" intro" src="/Meet-up Sessions/Guess Game/not-even-close.gif" alt="almost">
+           `
+           }  
+           /////////////////////////////////////////////////////////////////////////////////
+           else if (randomNumber<parseFloat(userInputNumber) && diff>3){
+           document.querySelector(".guess-result").innerHTML=
+           `
+               <p class=" intro" >${userName}. Your guess is higher. Try a lower number !</p>
+               <img class="intro" src="/Meet-up Sessions/Guess Game/not-even-close-2.gif" alt="almost">
+           `
+           } 
+           //////////////////////////////////////////////////////////////////////////////////
+           else if (parseFloat(userInputNumber)>randomNumber && diff<3){
+               document.querySelector(".guess-result").innerHTML=
+           `
+               <p class=" intro" >${userName}. Your guess is a bit higher, you're almost there !</p>
+               <img class=" intro" src="/Meet-up Sessions/Guess Game/almost-there.gif" alt="almost">
+           `
+           }  
+           /////////////////////////////////////////////////////////////////////////////////
+           else if (parseFloat(userInputNumber)<randomNumber && diff<3){
+           document.querySelector(".guess-result").innerHTML=
+           `
+               <p class="intro">${userName}.  Your guess is a bit lower, you're almost there !</p>
+               <img class="intro" src="/Meet-up Sessions/Guess Game/almost-there-2.gif" alt="almost">
+           `
+           } 
+           //////////////////////////////////////////////////////////////////////////////////
+           else if (userInputNumber===randomNumber) {
+           console.log("Wonderful, you nailed it")
+           document.querySelector(".guess-result").innerHTML=
+           `
+               <p class=" intro" >Congratulations ${userName}, you guessed right !</p>
+               <img class=" intro" src="/Meet-up Sessions/Guess Game/nailed-it.gif" alt="nailed">
+               <br><button class="play-again intro"> Play again? </button>
+           `
+           /////////////////////////////////////////////////////////////////////////////////
+           document.querySelector(".play-again").addEventListener('click', ()=>{
+               document.querySelector(".container-1").innerHTML=
+               `
+               <div>
+                   <H2>Welcome to the Guessing Game:</H2>
+               </div>
+               <div class="d-intro">
+                   <input class="user-name-input" type="text" placeholder="What's your name?">
+                   <button class="name-input-button">ENTER</button>
+               </div>
+               `
+               askName()
+               randomNumber = (Math.random()*10).toFixed(0)
+               console.log(randomNumber)
+           })
+   
+               ///fadeResults
+               //document.querySelector(".d-intro").classList.add("fadeInOut")
+               setTimeout(()=>{
+                   document.querySelector(".d-intro").setAttribute("hidden", true)
+               }, "0")
+           }
+       })
+   }
+   
+   
+   
+   
+   
+   
+   
+   </script> 
+</body>
+
+
+</html>

@@ -1,0 +1,128 @@
+body{
+    background-color: rgb(23, 82, 177);
+    transition: 0.25s;
+    font-family: Montserrat;
+}
+
+.header-div{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: rgb(230, 233, 234);
+    font-size: 25px;  
+}
+.left-side{
+    display: flex;
+}
+
+.middle-side{
+    font-size: large;
+    font-style: italic;
+}
+
+.right-side{
+    display: flex;    
+}
+
+.right-side div,
+.left-side div{
+    margin-left: 25px;
+}
+
+.background-image{
+    position: absolute;
+    height: 100vh
+}
+
+.body-div{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 800px;
+    font-weight: 700;
+    font-size: 120px;
+    color: white;
+}
+
+.footer-div{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-div h4{
+    color: rgb(157, 96, 213);
+}
+.footer-div p{
+    color: rgb(255, 255, 255);
+}
+
+.footer-left-side{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    min-width: 350px;
+    margin-left: 50px;
+    margin-right: 250px;
+    font-size: 25px;
+}
+
+.footer-middle-side{
+    display: flex;
+    flex-grow: 0;
+}
+        .card1{
+            border-radius: 35px;
+        }
+        .cards-div1{
+            transform: rotate(-25deg); 
+            transition: 1s;
+            
+        }
+                .cards-div1:hover{
+                    transform: scale(1.1) rotate(-25deg);
+                    transition: 1s;
+                    z-index: 200;
+                }
+
+
+        .cards-div2{   
+            transition: 1s; 
+            
+        }
+                .cards-div2:hover{
+                    transform: scale(1.1) ;
+                    transition: 1s;
+                    z-index: 200;
+                }
+
+
+
+
+        .cards-div3{
+            transform: rotate(25deg);
+            transition: 1s;
+        }
+                .cards-div3:hover{
+                    transform: scale(1.1) rotate(25deg);
+                    transition: 1s;
+                    z-index: 200;
+                }
+
+
+.footer-right-side{
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    width: 350px;
+    min-width: 350px;
+    font-size: 25px;
+    margin-right: 50px;
+    margin-left: 250px;
+}
+
+
